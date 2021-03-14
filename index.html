@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Document</title>
+</head>
+<body ng-controller="myController">
+  
+    <aside>
+        <ul>
+          <ul>
+              <li ng-repeat='tree in trees'>
+                  <p><i class="fas fa-caret-right" ng-class="rotate[tree.visible]" ng-click="tree.visible=!tree.visible"></i>
+                    <i class="fab fa-js yellow" ng-if="tree.name.endsWith('ts')"></i>
+                    {{tree.name}}</p>
+                  <ul ng-show="tree.visible">
+                      <li ng-repeat='child in tree.children'>
+                          <p><i class="fas fa-caret-right" ng-class="rotate[child.visible]" ng-click="child.visible=!child.visible"></i>
+                            <i class="fab fa-css3 blue" ng-if="child.name.endsWith('css')"></i> 
+                            <i class="fab fa-html5 red" ng-if="child.name.endsWith('html')"></i>
+                            <i class="fab fa-js yellow" ng-if="child.name.endsWith('ts')"></i>
+                            {{child.name}}</p>
+                          <ul ng-show="child.visible">
+                              <li ng-repeat='child1 in child.children'>
+                                  <p>
+                                    <i class="fab fa-css3 blue" ng-if="child1.name.endsWith('css')"></i> 
+                                    <i class="fab fa-html5 red" ng-if="child1.name.endsWith('html')"></i>
+                                    <i class="fab fa-js yellow" ng-if="child1.name.endsWith('ts')"></i>
+                                    {{child1.name}}</p>
+                              </li>
+                          </ul>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+    </aside>
+    <main></main>
+    <script src="script.js"></script>
+</body>
+</html>
